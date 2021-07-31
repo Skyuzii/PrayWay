@@ -2,6 +2,7 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using PrayWay.Application.Common.Behaviors;
 
 namespace PrayWay.Application
 {
@@ -13,6 +14,7 @@ namespace PrayWay.Application
             services.AddMediatR(assembly);
             services.AddAutoMapper(assembly);
             services.AddValidatorsFromAssembly(assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             return services;
         }

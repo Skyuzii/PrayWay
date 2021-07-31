@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using AutoMapper;
 
-namespace PrayWay.Application.Mappings
+namespace PrayWay.Application.Common.Mappings
 {
     public class MappingProfile : Profile
     {
