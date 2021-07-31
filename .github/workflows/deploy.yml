@@ -19,5 +19,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore -c Release
-    - name: Test
+    - name: Publish
       run: dotnet publish -c Release -o 'prayway'
