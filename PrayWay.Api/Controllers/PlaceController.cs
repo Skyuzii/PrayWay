@@ -28,7 +28,7 @@ namespace PrayWay.Api.Controllers
         }
         
         [HttpGet("{id}")]
-        public async Task<PlaceDto> Get([FromQuery] int id)
+        public async Task<PlaceDto> Get(int id)
         {
             return await _mediator.Send(new GetPlaceQuery {Id = id});
         }
@@ -42,9 +42,11 @@ namespace PrayWay.Api.Controllers
             return placeId;
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update([FromForm] UpdatePlaceCommand command)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromForm] UpdatePlaceCommand command)
         {
+            if (id != command.Id) return BadRequest();
+            
             await _mediator.Send(command);
             return Ok();
         }
